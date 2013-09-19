@@ -63,7 +63,7 @@ void ofxCodbar::closeCode(){
     ofLogVerbose() << "Closing with this code value : " << m_sCodbarTempReceived;
 }
 
-void ofxCodbar::addKeyToCode(int _key){
+void ofxCodbar::addKeyToCode(int _keyCode){
     
     if((ofGetElapsedTimeMillis() - m_iLastScan)>m_iGiveUpTime){
         // after the delay, it re-opens the code and
@@ -74,10 +74,13 @@ void ofxCodbar::addKeyToCode(int _key){
     
     // even you could add
     // before you add, control
-    if (_key>0 && _key<255) {
-        
-        m_sCodbarTempReceived += _key;
+    // 48 = Code Ascii of 0
+    // 57 = Code Ascii of 9
+    // It just take numbers
+    if (_keyCode>=48 && _keyCode<57) {
+        m_sCodbarTempReceived += _keyCode;
         ofLogNotice() << "Code Received : " << ofToString(m_sCodbarTempReceived.size()) << "/" << m_iSizeDefined << ":" << m_sCodbarTempReceived;
+        
     }
 }
 
@@ -115,5 +118,12 @@ bool ofxCodbar::isFullyScanned(){
         return false;
     }
     
+    
+}
+
+void ofxCodbar::keyPressed(int key){
+    
+}
+void ofxCodbar::keyReleased(int key){
     
 }
