@@ -77,7 +77,7 @@ void ofxCodbar::addKeyToCode(int _keyCode){
     // 48 = Code Ascii of 0
     // 57 = Code Ascii of 9
     // It just take numbers
-    if (_keyCode>=48 && _keyCode<57) {
+    if (_keyCode>=48 && _keyCode<=57) {
         m_sCodbarTempReceived += _keyCode;
         ofLogNotice() << "Code Received : " << ofToString(m_sCodbarTempReceived.size()) << "/" << m_iSizeDefined << ":" << m_sCodbarTempReceived;
         
